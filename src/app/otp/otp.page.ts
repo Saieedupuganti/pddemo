@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FirestoreService } from '../services/firestore.services';
 
 @Component({
   selector: 'app-otp',
@@ -7,20 +8,28 @@ import { Router } from '@angular/router';
   styleUrls: ['./otp.page.scss'],
 })
 export class OtpPage {
-  otpCode: number = 0; // Initialize with a default value
-  errorMessage: string = ''; // Holds the error message
+  otpCode: string = '';
+  errorMessage: string = '';
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private firestoreService: FirestoreService
+  ) {}
 
   verifyOTP() {
-    // Implement your OTP verification logic here
-    // For example, you can compare the entered OTP with the expected OTP
-    // If the OTP is valid, you can navigate to the next page
-    if (this.otpCode === 123456) {
-      this.router.navigate(['/success']);
-    } else {
-      // Handle invalid OTP, show error message, etc.
-      this.errorMessage = 'Invalid OTP';
-    }
+    const otpData = {
+      otp: this.otpCode,
+      recipientName: '', // Provide the recipient name if needed
+      toEmail: '', // Provide the email address if needed
+    };
+
+    this.firestoreService.verifyOTP(otpData).subscribe((isValid: boolean) => {
+      if (isValid) {
+        this.router.navigate(['/success']);
+      } else {
+        this.errorMessage = 'Invalid OTP';
+      }
+    });
   }
 }

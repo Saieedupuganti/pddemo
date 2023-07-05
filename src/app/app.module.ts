@@ -1,12 +1,17 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicModule } from '@ionic/angular';
-import { RouterModule } from '@angular/router';
+import { RouteReuseStrategy } from '@angular/router';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
-import { AngularFireModule } from 'angularfire2/firestore';
+import { FirestoreService } from './services/firestore.services';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,11 +19,12 @@ import { AngularFireModule } from 'angularfire2/firestore';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    RouterModule.forRoot([]),
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule.enablePersistence(),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
-  providers: [],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  providers: [ FirestoreService ],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
