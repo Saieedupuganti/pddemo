@@ -1,0 +1,8 @@
+<ion-header [translucent]="true"></ion-header>
+
+<ion-content class="ion-content">
+  <h1 class="TitleArea">Enter OTP</h1>
+  <ion-input type="number" [(ngModel)]="otpCode" placeholder="OTP"></ion-input>
+  <p class="ErrorMessage">{{ errorMessage }}</p>
+  <ion-button class="VerifyButton" (click)="verifyOTP()">Verify</ion-button>
+</ion-content>

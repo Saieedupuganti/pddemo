@@ -1,0 +1,10 @@
+
+<ion-header [translucent]="true"></ion-header>
+
+<ion-content class="ion-content">
+  <h1 class="TitleArea">Pricedonkey</h1>
+  <ion-textarea fill="outline" placeholder="Company Name" class="CompanyName-Area"></ion-textarea>
+  <ion-text class="OR-Area">OR</ion-text>
+  <ion-textarea fill="outline" placeholder="Email Address" class="EmailAddress-Area" [(ngModel)]="userEmail"></ion-textarea>
+  <ion-button class="LoginButton-Area" (click)="generateOTP()">Log in</ion-button>
+</ion-content>
