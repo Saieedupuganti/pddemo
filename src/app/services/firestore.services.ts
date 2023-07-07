@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, DocumentReference, DocumentData } from '@angular/fire/compat/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -9,18 +9,31 @@ import { map } from 'rxjs/operators';
 export class FirestoreService {
   constructor(private firestore: AngularFirestore) {}
 
-  storeOTP(otpData: DocumentData): Promise<DocumentReference<DocumentData>> {
-    const collectionRef = this.firestore.collection<DocumentData>('otp');
-    return collectionRef.add(otpData);
+  storeOTP(otpData: any): Promise<any> {
+    const timestamp = new Date().getTime(); 
+    const otpDataWithTimestamp = { ...otpData, timestamp }; 
+    const collectionRef = this.firestore.collection<any>('otp');
+    return collectionRef.add(otpDataWithTimestamp);
   }
 
   verifyOTP(otpData: any): Observable<boolean> {
+    console.log(otpData);
+    console.log(otpData.otp);
+    console.log(otpData.toEmail);
+  
     return this.firestore
-      .collection('otp', (ref) => ref.where('otp', '==', otpData.otp))
+      .collection('otp', (ref) => ref.where('toEmail', '==', otpData.toEmail).orderBy('timestamp', 'desc'))
       .valueChanges()
       .pipe(
         map((data: any[]) => {
-          return data.length > 0;
+          if (data && data.length > 0) {
+            const latestOTP = data[0].otp.toString();
+            console.log('Latest OTP:', latestOTP);
+            console.log(otpData.otp);
+            console.log(otpData.toEmail);
+            return latestOTP === otpData.otp.toString();
+          }
+          return false;
         })
       );
   }
