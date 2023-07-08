@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { FirestoreService } from '../services/firestore.services';
+import * as emailjs from 'emailjs-com';
 
 @Component({
   selector: 'app-tab1',
@@ -26,54 +27,54 @@ export class Tab1Page {
       to_email: this.userEmail,
     };
     console.log(otp);
-    // emailjs
-    //   .send('service_o56917j', 'template_7e60w9q', emailParams, 'y4S-GgPR27hmrNsQV')
-    //   .then((response: emailjs.EmailJSResponseStatus) => {
-    //     if (response.status === 200) {
-    //       console.log('Email sent successfully!', response);
+    emailjs
+      .send('service_o56917j', 'template_7e60w9q', emailParams, 'y4S-GgPR27hmrNsQV')
+      .then((response: emailjs.EmailJSResponseStatus) => {
+        if (response.status === 200) {
+          console.log('Email sent successfully!', response);
 
-    //       const otpData = {
-    //         otp: otp.toString(), 
-    //         recipientName: this.recipientName,
-    //         toEmail: this.userEmail,
-    //       };
+          const otpData = {
+            otp: otp.toString(), 
+            recipientName: this.recipientName,
+            toEmail: this.userEmail,
+          };
 
-    //       this.firestoreService
-    //         .storeOTP(otpData)
-    //         .then(() => {
-    //           console.log('OTP stored in the database successfully');
-    //           console.log(this.userEmail);
-    //           this.router.navigate(['/otp'], { state: { email: this.userEmail } });
-    //         })
-    //         .catch((error: any) => {
-    //           console.error('Error storing OTP in the database:', error);
-    //         });
-    //     } else {
-    //       console.error('Error sending email:', response);
-    //     }
-    //   })
-    //   .catch((error: any) => {
-    //     console.error('Error sending email:', error);
-    //   });
-
-    const otpData = {
-      otp: otp.toString(), 
-      recipientName: this.recipientName,
-      toEmail: this.userEmail,
-    };
-
-    this.firestoreService
-      .storeOTP(otpData)
-      .then(() => {
-        console.log('OTP stored in the database successfully');
-        console.log(this.userEmail);
-        const navigationExtras: NavigationExtras = {
-          state: { email: this.userEmail } 
-        };
-        this.router.navigate(['/otp'], navigationExtras);
+          this.firestoreService
+            .storeOTP(otpData)
+            .then(() => {
+              console.log('OTP stored in the database successfully');
+              console.log(this.userEmail);
+              this.router.navigate(['/otp'], { state: { email: this.userEmail } });
+            })
+            .catch((error: any) => {
+              console.error('Error storing OTP in the database:', error);
+            });
+        } else {
+          console.error('Error sending email:', response);
+        }
       })
       .catch((error: any) => {
-        console.error('Error storing OTP in the database:', error);
+        console.error('Error sending email:', error);
       });
+
+    // const otpData = {
+    //   otp: otp.toString(), 
+    //   recipientName: this.recipientName,
+    //   toEmail: this.userEmail,
+    // };
+
+    // this.firestoreService
+    //   .storeOTP(otpData)
+    //   .then(() => {
+    //     console.log('OTP stored in the database successfully');
+    //     console.log(this.userEmail);
+    //     const navigationExtras: NavigationExtras = {
+    //       state: { email: this.userEmail } 
+    //     };
+    //     this.router.navigate(['/otp'], navigationExtras);
+    //   })
+    //   .catch((error: any) => {
+    //     console.error('Error storing OTP in the database:', error);
+    //   });
   }
 }
