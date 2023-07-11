@@ -1,9 +1,53 @@
-<ion-header [translucent]="true"></ion-header>
-
 <ion-content class="ion-content">
-  <h1 class="TitleArea">Enter OTP</h1>
-  <ion-input type="number" [(ngModel)]="otpCode" placeholder="OTP"></ion-input>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/" icon="arrow-back"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <h1 class="TitleArea">Verification</h1>
+  <h6 class="VerificationMessage">We've sent you the verification code to your email</h6>
+
+  <div class="OTPInputContainer">
+    <ion-input type="number" [(ngModel)]="otpCode[0]" placeholder="0"></ion-input>
+    <ion-input type="number" [(ngModel)]="otpCode[1]" placeholder="0"></ion-input>
+    <ion-input type="number" [(ngModel)]="otpCode[2]" placeholder="0"></ion-input>
+    <ion-input type="number" [(ngModel)]="otpCode[3]" placeholder="0"></ion-input>
+    <ion-input type="number" [(ngModel)]="otpCode[4]" placeholder="0"></ion-input>
+    <ion-input type="number" [(ngModel)]="otpCode[5]" placeholder="0"></ion-input>
+  </div>
+  
   <p class="ErrorMessage">{{ errorMessage }}</p>
-  <ion-button class="VerifyButton" (click)="verifyOTP()">Verify</ion-button>
+
+  <ion-button class="VerifyButton" (click)="verifyOTP()">
+    <span class="VerifyButtonText">CONTINUE</span>
+    <ion-icon name="arrow-forward-circle" class="ArrowIcon"></ion-icon>
+  </ion-button>
+
   <ion-button class="ResendButton" (click)="resendOTP()">Resend OTP</ion-button>
+
+  <div class="KeypadContainer" *ngIf="isKeypadVisible">
+    <div class="KeypadRow">
+      <ion-button class="KeypadButton" (click)="appendDigit(1)">1</ion-button>
+      <ion-button class="KeypadButton" (click)="appendDigit(2)">2</ion-button>
+      <ion-button class="KeypadButton" (click)="appendDigit(3)">3</ion-button>
+    </div>
+    <div class="KeypadRow">
+      <ion-button class="KeypadButton" (click)="appendDigit(4)">4</ion-button>
+      <ion-button class="KeypadButton" (click)="appendDigit(5)">5</ion-button>
+      <ion-button class="KeypadButton" (click)="appendDigit(6)">6</ion-button>
+    </div>
+    <div class="KeypadRow">
+      <ion-button class="KeypadButton" (click)="appendDigit(7)">7</ion-button>
+      <ion-button class="KeypadButton" (click)="appendDigit(8)">8</ion-button>
+      <ion-button class="KeypadButton" (click)="appendDigit(9)">9</ion-button>
+    </div>
+    <div class="KeypadRow">
+      <ion-button class="KeypadButton" (click)="clearDigits()">Clear</ion-button>
+      <ion-button class="KeypadButton" (click)="appendDigit(0)">0</ion-button>
+      <ion-button class="KeypadButton" (click)="deleteDigit()"><ion-icon name="backspace-outline"></ion-icon></ion-button>
+    </div>
+  </div>
 </ion-content>

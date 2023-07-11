@@ -13,6 +13,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
 import { FirestoreService } from './services/firestore.services';
 import { FormsModule } from '@angular/forms';
+import { TabsPageModule } from './tabs/tabs.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    FormsModule
+    FormsModule,
+    TabsPageModule 
   ],
   providers: [ FirestoreService ],
   bootstrap: [AppComponent]

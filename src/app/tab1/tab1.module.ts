@@ -1,28 +1,20 @@
+import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
-import { AngularFireModule } from '@angular/fire/compat';
-import { Tab1PageRoutingModule } from './tab1-routing.module';
-import { Tab1Page } from './tab1.page';
-import { environment } from '../../environments/environment';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { FirestoreService } from '../services/firestore.services';
 import { FormsModule } from '@angular/forms';
-import { Injectable } from '@angular/core';
-@Injectable({
-  providedIn: 'root'
-})
+import { Tab1Page } from './tab1.page';
+import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
+
+import { Tab1PageRoutingModule } from './tab1-routing.module';
+
 @NgModule({
-  declarations: [Tab1Page],
   imports: [
-    CommonModule,
     IonicModule,
+    CommonModule,
     FormsModule,
-    Tab1PageRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    ExploreContainerComponentModule,
+    Tab1PageRoutingModule
   ],
-  providers: [FirestoreService],
-  bootstrap: [Tab1Page]
+  declarations: [Tab1Page]
 })
 export class Tab1PageModule {}

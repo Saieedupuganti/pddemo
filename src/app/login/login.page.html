@@ -1,0 +1,36 @@
+<ion-header [translucent]="true"></ion-header>
+
+<ion-content class="ion-content">
+  <img src="https://pricedonkey.net/wp-content/uploads/2023/03/cropped-PriceDonkey-Light-no-border-1.png" alt="Pricedonkey" class="TitleImage">
+
+  <h1 class="SignInTitle">Sign in</h1>
+  
+  <ion-item lines="none">
+    <h2 class="CompanyNameTitle">Company Name</h2>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-input placeholder="      Enter company name" class="companyInput BoxInput"></ion-input>
+  </ion-item>
+
+  <ion-item lines="none">
+    <h2 class="EmailAddressTitle">Email Address</h2>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-input placeholder="      Enter email address" class="EmailInput BoxInput"></ion-input>
+  </ion-item>
+  
+
+  <ng-container *ngFor="let item of items; let i = index">
+    <ion-item>
+      <ion-textarea [(ngModel)]="userEmail" class="EmailAddress-Area"></ion-textarea>
+    </ion-item>
+  </ng-container>
+
+  <ion-button class="LoginButton-Area" (click)="generateOTP()">
+    <span class="ButtonText">SIGN IN</span>
+    <ion-icon name="arrow-forward-circle" class="ArrowIcon"></ion-icon>
+  </ion-button>
+  
+</ion-content>

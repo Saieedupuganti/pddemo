@@ -1,5 +1,134 @@
 .ErrorMessage {
-    color: red;
-    margin-top: 10px;
-  }
-  
+  color: red;
+  margin-top: 10px;
+}
+
+.TitleArea {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.ion-content {
+  margin-left: 50px;
+  background-color: white;
+  margin-left: 10px;
+}
+
+.VerificationMessage {
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.OTPInputContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+.OTPInputContainer ion-input {
+  --padding-start: 0;
+  --padding-end: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --background: #D9D9D9;
+  border: 2px solid #D9D9D9;
+  border-radius: 4px;
+  margin-right: 5px; /* Add a margin-right for the gap between boxes */
+}
+
+.OTPInputContainer ion-input input {
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  color: #000;
+  font-weight: bold;
+  font-size: 18px;
+  display: flex;
+  justify-content: center; /* Center the value horizontally */
+  align-items: center; /* Center the value vertically */
+  appearance: none; /* Remove the increasing and decreasing buttons */
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
+
+.OTPInputContainer ion-input input[type="number"]::-webkit-inner-spin-button,
+.OTPInputContainer ion-input input[type="number"]::-webkit-outer-spin-button {
+  display: none;
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+.VerifyButton {
+  width: 80%;
+  margin: 10px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.ArrowIcon {
+  margin-left: 5px;
+}
+
+.ResendButton {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  --background: #D9D9D9;
+  --color: black;
+}
+
+.KeypadContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.KeypadRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.KeypadButton {
+  width: 33.33%;
+  height: 40px; 
+  font-size: 18px; 
+  align-items: center;
+  justify-content: center;
+  --background: white; 
+  --color: black;
+}
+
+.ClearButton {
+  order: 1;
+}
+
+.DeleteButton {
+  order: 3;
+}
+
+.KeypadButton:last-child {
+  border-right: none;
+}
+
+.KeypadRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.KeypadContainer {
+  flex-grow: 1;
+}

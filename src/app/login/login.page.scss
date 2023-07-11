@@ -1,0 +1,65 @@
+.ion-content {
+    --ion-background-color: white;
+  }
+  
+  .TitleImage {
+    margin-top: 100px;
+    margin-bottom: 20px;
+    width: 200px;
+    height: auto;
+    margin-left: 30px;
+  }
+  
+  .SignInTitle {
+    margin-left: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    height: 30px;
+  }
+  
+  .CompanyNameTitle {
+    margin-left: 20px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .EmailAddressTitle {
+    margin-left: 20px;
+    font-size: 18px;
+    font-weight: bold;
+
+  }
+  
+  .BoxInput {
+    margin-left: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    font-weight: bold;
+    border: 2px solid #ccc;
+    height: 10px;
+  }
+  
+  
+  .LoginButton-Area {
+    width: 80%;
+    margin-left: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+  }
+  
+  .ButtonText {
+    flex-grow: 1;
+    text-align: center;
+  }
+  
+  .ArrowIcon {
+    margin-left: 5px;
+  }
+  
+  .error-message {
+    color: red;
+  }
+  
