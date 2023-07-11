@@ -11,28 +11,26 @@
   }
   
   .SignInTitle {
-    margin-left: 30px;
+
     font-size: 20px;
     font-weight: bold;
-    height: 30px;
+   
   }
   
   .CompanyNameTitle {
-    margin-left: 20px;
+   
     font-size: 18px;
     font-weight: bold;
   }
   
   .EmailAddressTitle {
-    margin-left: 20px;
+
     font-size: 18px;
     font-weight: bold;
 
   }
   
   .BoxInput {
-    margin-left: 15px;
-    border: 1px solid #ccc;
     border-radius: 4px;
     padding: 8px;
     font-weight: bold;
@@ -43,9 +41,8 @@
   
   .LoginButton-Area {
     width: 80%;
-    margin-left: 30px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-top: 30px;
   }

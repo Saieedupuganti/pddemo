@@ -1,28 +1,28 @@
-<ion-content class="ion-content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="/" icon="arrow-back"></ion-back-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-  
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
   <h1 class="TitleArea">Verification</h1>
   <h6 class="VerificationMessage">We've sent you the verification code to your email</h6>
 
   <div class="OTPInputContainer">
     <ion-input type="text" [(ngModel)]="otpCode[0]" inputmode="numeric" placeholder="0" (click)="showKeypad()"></ion-input>
-    <ion-input type="text" [(ngModel)]="otpCode[1]" inputmode="numeric" placeholder="0"></ion-input>
-    <ion-input type="text" [(ngModel)]="otpCode[2]" inputmode="numeric" placeholder="0"></ion-input>
-    <ion-input type="text" [(ngModel)]="otpCode[3]" inputmode="numeric" placeholder="0"></ion-input>
-    <ion-input type="text" [(ngModel)]="otpCode[4]" inputmode="numeric" placeholder="0"></ion-input>
-    <ion-input type="text" [(ngModel)]="otpCode[5]" inputmode="numeric" placeholder="0"></ion-input>
+    <ion-input type="text" [(ngModel)]="otpCode[1]" inputmode="numeric" placeholder="0" (click)="showKeypad()"></ion-input>
+    <ion-input type="text" [(ngModel)]="otpCode[2]" inputmode="numeric" placeholder="0" (click)="showKeypad()"></ion-input>
+    <ion-input type="text" [(ngModel)]="otpCode[3]" inputmode="numeric" placeholder="0" (click)="showKeypad()"></ion-input>
+    <ion-input type="text" [(ngModel)]="otpCode[4]" inputmode="numeric" placeholder="0" (click)="showKeypad()"></ion-input>
+    <ion-input type="text" [(ngModel)]="otpCode[5]" inputmode="numeric" placeholder="0" (click)="showKeypad()"></ion-input>
   </div>
-  
+
   <p class="ErrorMessage">{{ errorMessage }}</p>
 
   <ion-button class="VerifyButton" (click)="verifyOTP()">
-    <span class="VerifyButtonText">CONTINUE</span>
+    <ion-label class="VerifyButtonText">CONTINUE</ion-label>
     <ion-icon name="arrow-forward-circle" class="ArrowIcon"></ion-icon>
   </ion-button>
 
